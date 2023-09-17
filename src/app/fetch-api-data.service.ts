@@ -89,6 +89,47 @@ export class FetchApiDataService {
     return user;
   }
 
+  // Making the api call for getting favourite movies for a user endpoint
+  getFavouriteMovies(): Observable<any> {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const token = localStorage.getItem('token');
+    return this.http.get(apiUrl + 'users/' + user.Username, {
+      headers: new HttpHeaders(
+        {
+          Authorization: 'Bearer ' + token,
+        })
+    }).pipe(
+      map(this.extractResponseData),
+      map((data) => data.FavouriteMovies),
+      catchError(this.handleError)
+    );
+  }
+
+  // Making the api call for adding a movie to favourites endpoint
+  addFavouriteMovie(movieId: string): Observable<any> {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const token = localStorage.getItem('token');
+    user.FavouriteMovies.push(movieId);
+    localStorage.setItem('user', JSON.stringify(user));
+
+    // Makes the API call to the backend server to add the movie to favourites
+    return this.http.post(apiUrl + 'users/' + user.Username + '/movies/' + movieId, {}, {
+      headers: new HttpHeaders(
+        {
+          Authorization: 'Bearer ' + token,
+        }),
+      responseType: "text"
+    }).pipe(
+      map(this.extractResponseData),
+      catchError(this.handleError)
+    );
+  }
+
+  isFavouriteMovie(movieId: string): boolean {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    return user.FavouriteMovies.indexOf(movieId) >= 0;
+  }
+
   private handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
       console.error('Some error occurred:', error.error.message);
