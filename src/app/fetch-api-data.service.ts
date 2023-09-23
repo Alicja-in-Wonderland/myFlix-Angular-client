@@ -109,7 +109,7 @@ export class FetchApiDataService {
         })
     }).pipe(
       map(this.extractResponseData),
-      map((data) => data.FavouriteMovies),
+      map((data) => data.Favourites),
       catchError(this.handleError)
     );
   }
@@ -118,7 +118,7 @@ export class FetchApiDataService {
   addFavouriteMovie(movieId: string): Observable<any> {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     const token = localStorage.getItem('token');
-    user.FavouriteMovies.push(movieId);
+    user.Favourites.push(movieId);
     localStorage.setItem('user', JSON.stringify(user));
 
     // Makes the API call to the backend server to add the movie to favourites
@@ -136,7 +136,7 @@ export class FetchApiDataService {
 
   isFavouriteMovie(movieId: string): boolean {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
-    return user.FavouriteMovies.indexOf(movieId) >= 0;
+    return user.Favourites.indexOf(movieId) >= 0;
   }
 
   // Making the api call for updating user info endpoint
@@ -173,10 +173,10 @@ export class FetchApiDataService {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     const token = localStorage.getItem('token');
 
-    const index = user.FavouriteMovies.indexOf(movieId);
+    const index = user.Favourites.indexOf(movieId);
     console.log(index);
     if (index > -1) { // only splice array when item is found
-      user.FavouriteMovies.splice(index, 1); // 2nd parameter means remove one item only
+      user.Favourites.splice(index, 1); // 2nd parameter means remove one item only
     }
     localStorage.setItem('user', JSON.stringify(user));
     return this.http.delete(apiUrl + 'users/' + user.Username + '/movies/' + movieId, {

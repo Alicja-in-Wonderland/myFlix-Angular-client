@@ -1,0 +1,59 @@
+<div class="profile-container">
+    <div class="info-container ">
+        <div class="info">
+            <h1>Profile</h1>
+            <p>Username: <span>{{user.Username}}</span> </p>
+            <p>Email: <span>{{user.Email}}</span></p>
+
+            <h2>Your Favourite Movies</h2>
+            <div *ngIf="favouriteMovies.length === 0">
+                <p>Your List Is Empty</p>
+            </div>
+        </div>
+        <mat-list>
+            <mat-list-item *ngFor="let movie of favouriteMovies;" class="image-container">
+                <img matListItemAvatar src="{{movie.ImagePath}}" />
+                <span matListItemTitle>{{movie.Title}}</span>
+            </mat-list-item>
+        </mat-list>
+    </div>
+
+
+    <form>
+        <h1>Update Profile</h1>
+
+        <br>
+
+        <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input matInput [(ngModel)]="userData.Username" type="text" name="Username">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput [(ngModel)]="userData.Password" type="password" placeholder="Password" name="Password"
+                required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput [(ngModel)]="userData.Email" type="email" name="Email">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Birthday</mat-label>
+            <input matInput [(ngModel)]="userData.Birthday" type="date" name="Birthday">
+        </mat-form-field>
+
+        <br>
+
+        <button mat-raised-button class="profileButtons" (click)="editUser()">
+            Update
+        </button>
+
+        <button mat-raised-button class="profileButtons" (click)="deleteUser()">
+            Delete Account
+        </button>
+    </form>
+
+</div>

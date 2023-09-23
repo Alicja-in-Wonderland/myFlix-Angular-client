@@ -20,10 +20,13 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { MatIconModule } from '@angular/material/icon';
 
 import { RouterModule, Routes } from '@angular/router';
+import { ProfileViewComponent } from './profile-view/profile-view.component';
+import { MatListModule } from '@angular/material/list';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
+  { path: 'profile', component: ProfileViewComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
@@ -33,7 +36,8 @@ const appRoutes: Routes = [
     UserRegistrationFormComponent,
     UserLoginFormComponent,
     MovieCardComponent,
-    WelcomePageComponent
+    WelcomePageComponent,
+    ProfileViewComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +50,7 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatIconModule,
     MatDialogModule,
+    MatListModule,
     MatSnackBarModule,
     FormsModule,
     RouterModule.forRoot(appRoutes)
