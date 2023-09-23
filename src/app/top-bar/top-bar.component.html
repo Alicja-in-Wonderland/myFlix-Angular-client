@@ -1,8 +1,8 @@
 <mat-toolbar>
     <a mat-button (click)="toMovies()" target="_blank">Home</a>
     <span class="nav-bar"></span>
-    <button mat-icon-button (click)="toProfile()" class="person-icon" aria-label="Person icon-button">
-        <mat-icon>person</mat-icon>
+    <button mat-icon-button (click)="toProfile()" class="person-icon"
+        aria-label="Person icon-button">{{this.username}}<mat-icon>person</mat-icon>
     </button>
     <button mat-icon-button (click)="logOut()" class="logout-icon" aria-label="Logout icon-button">
         <mat-icon>logout</mat-icon>
