@@ -22,6 +22,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfileViewComponent } from './profile-view/profile-view.component';
 import { MatListModule } from '@angular/material/list';
+import { TopBarComponent } from './top-bar/top-bar.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -37,7 +39,8 @@ const appRoutes: Routes = [
     UserLoginFormComponent,
     MovieCardComponent,
     WelcomePageComponent,
-    ProfileViewComponent
+    ProfileViewComponent,
+    TopBarComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ const appRoutes: Routes = [
     MatListModule,
     MatSnackBarModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
