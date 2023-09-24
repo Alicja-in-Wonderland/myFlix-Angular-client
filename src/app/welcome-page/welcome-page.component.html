@@ -1,10 +1,16 @@
 <div class="main-page">
-    <h1>
-        Welcome to myFlix!
-    </h1>
-    <button mat-raised-button (click)="openUserRegistrationDialog()" style="margin-right: 10px;" color="primary">
-        Sign Up
-    </button>
-    <button mat-raised-button (click)="openUserLoginDialog()" style="margin-right: 10px;" color="primary">Log
-        In</button>
+    <div>
+        <div class="logo-container"><img class="logo-gold" src="assets/myFlix-logo-gold.svg" alt="logo" /></div>
+        <h1 class="welcome-header">
+            Welcome to myFlix!
+        </h1>
+        <div class="welcome-view-buttons">
+            <button mat-raised-button (click)="openUserRegistrationDialog()" style="margin-right: 10px;"
+                color="primary">
+                Sign Up
+            </button>
+            <button mat-raised-button (click)="openUserLoginDialog()" style="margin-right: 10px;" color="primary">Log
+                In</button>
+        </div>
+    </div>
 </div>

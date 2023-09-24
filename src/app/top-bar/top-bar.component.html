@@ -1,6 +1,7 @@
-<mat-toolbar>
-    <a mat-button (click)="toMovies()" target="_blank">Home</a>
-    <span class="nav-bar"></span>
+<mat-toolbar class="nav-bar">
+    <img class="myflix-logo" src="assets/myFlix-logo.svg" alt="logo" />
+    <a (click)="toMovies()" target="_blank">Home</a>
+    <span class="spacer"></span>
     <button mat-icon-button (click)="toProfile()" class="person-icon"
         aria-label="Person icon-button">{{this.username}}<mat-icon>person</mat-icon>
     </button>

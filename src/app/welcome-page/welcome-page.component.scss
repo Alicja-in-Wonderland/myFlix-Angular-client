@@ -1,0 +1,30 @@
+.main-page {
+    display: flex;
+    justify-content: center;
+    margin-top: 5em;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+}
+
+.logo-gold {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.welcome-header {
+    font-size: 50px;
+}
+
+.welcome-view-buttons {
+    display: flex;
+    justify-content: center;
+
+    button {
+        background-color: #D8A22A;
+        color: #000;
+    }
+
+}

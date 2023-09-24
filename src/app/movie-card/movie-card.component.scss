@@ -1,0 +1,38 @@
+.movie-card {
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 10px;
+    margin: 25px;
+    background-color: #D8A22A;
+
+    .movie-card-img {
+        border-radius: 10px;
+        border: solid 1px #000;
+        max-width: 400px;
+    }
+}
+
+.card-header {
+    mat-card-title {
+        font-size: x-large;
+        color: #000;
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+
+    mat-card-subtitle {
+        font-size: medium;
+        color: #000;
+        margin-bottom: 10px;
+    }
+}
+
+.movie-card-actions {
+    button {
+        color: #000;
+    }
+
+    mat-icon {
+        color: #DC4621;
+    }
+}
