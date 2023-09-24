@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class MovieCardComponent {
   movies: any[] = [];
+  user: any = {};
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -68,24 +69,38 @@ export class MovieCardComponent {
     this.dialog.open(InfoDialogComponent, dialogConfig);
   }
 
-  addFavourite(id: string): void {
-    this.fetchApiData.addFavouriteMovie(id).subscribe((result) => {
+  toggleFavourite(movie: any): void {
+    // Toggle the favourite status of the movie
+    if (this.isFavouriteMovie(movie)) {
+      // Remove the movie from favourites locally
+      const user = JSON.parse(localStorage.getItem('user') || '{}');
+      user.Favourites = user.Favourites.filter((id: string) => id !== movie._id);
+      localStorage.setItem('user', JSON.stringify(user));
+    } else {
+      // Add the movie to favourites locally
+      const user = JSON.parse(localStorage.getItem('user') || '{}');
+      user.Favorites.push(movie._id);
+      localStorage.setItem('user', JSON.stringify(user));
 
-      this.snackBar.open('Added to favourites.', 'OK', {
-        duration: 2000
-      });
-    });
+      // Add the movie to favourites on the backend server
+      this.fetchApiData.addFavouriteMovie(movie._id).subscribe(
+        () => {
+          console.log('Movie added to favourites successfully.');
+        },
+        (error) => {
+          console.error('Error adding movie to favourites:', error);
+        }
+      );
+    }
+
+    // Update the local 'isFavourite' property to reflect the change
+    movie.isFavourite = !this.isFavouriteMovie(movie);
   }
 
-  isFavourite(id: string): boolean {
-    return this.fetchApiData.isFavouriteMovie(id);
-  }
 
-  removeFavourite(id: string): void {
-    this.fetchApiData.deleteFavouriteMovie(id).subscribe((result) => {
-      this.snackBar.open('Removed from favourites.', 'OK', {
-        duration: 2000
-      });
-    });
+  // Function to check if a movie is in favourites
+  isFavouriteMovie(movie: any): boolean {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    return user.Favourites && user.Favourites.includes(movie._id);
   }
 }
