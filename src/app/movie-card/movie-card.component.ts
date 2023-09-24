@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service'
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-card',
@@ -9,8 +12,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class MovieCardComponent {
   movies: any[] = [];
-  constructor(public fetchApiData: FetchApiDataService,
-    public snackBar: MatSnackBar) { }
+
+  constructor(
+    public fetchApiData: FetchApiDataService,
+    public snackBar: MatSnackBar,
+    public dialog: MatDialog,
+    public router: Router
+  ) { }
 
   //This method is called when Angular is done creating the component.
   ngOnInit(): void {
@@ -20,9 +28,20 @@ export class MovieCardComponent {
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
-      console.log(this.movies);
       return this.movies;
     });
+  }
+
+  showGenre(name: string, description: string): void {
+    this.dialog.closeAll();
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      dialogTitle: name,
+      dialogContent: description,
+    };
+    dialogConfig.width = '40vw';
+    dialogConfig.panelClass = 'custom-dialog-class';
+    this.dialog.open(InfoDialogComponent, dialogConfig);
   }
 
   addFavourite(id: string): void {

@@ -24,6 +24,7 @@ import { ProfileViewComponent } from './profile-view/profile-view.component';
 import { MatListModule } from '@angular/material/list';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { InfoDialogComponent } from './info-dialog/info-dialog.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -40,7 +41,8 @@ const appRoutes: Routes = [
     MovieCardComponent,
     WelcomePageComponent,
     ProfileViewComponent,
-    TopBarComponent
+    TopBarComponent,
+    InfoDialogComponent
   ],
   imports: [
     BrowserModule,
