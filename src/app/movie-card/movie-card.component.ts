@@ -56,6 +56,18 @@ export class MovieCardComponent {
     this.dialog.open(InfoDialogComponent, dialogConfig);
   }
 
+  showSynopsis(title: string, description: string): void {
+    this.dialog.closeAll();
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      dialogTitle: title,
+      dialogContent: description,
+    };
+    dialogConfig.width = '40vw';
+    dialogConfig.panelClass = 'custom-dialog-class';
+    this.dialog.open(InfoDialogComponent, dialogConfig);
+  }
+
   addFavourite(id: string): void {
     this.fetchApiData.addFavouriteMovie(id).subscribe((result) => {
 
