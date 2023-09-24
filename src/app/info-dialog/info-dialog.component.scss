@@ -1,6 +1,7 @@
 .custom-info-dialog {
     background-color: #D8A22A;
-    border-radius: 10px;
+    color: #000;
+    border-radius: 5px;
     height: fit-content;
 
     .custom-card-header {
@@ -13,7 +14,7 @@
 
     .custom-card-actions {
         button {
-            color: #FFF;
+            color: #000;
         }
     }
 }
