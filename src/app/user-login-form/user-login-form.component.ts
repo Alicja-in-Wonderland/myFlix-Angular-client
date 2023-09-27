@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+
 //This import is used to close the dialog on success
 import { MatDialogRef } from '@angular/material/dialog';
 
@@ -30,6 +31,14 @@ export class UserLoginFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * This method will send the form inputs to the backend
+   * @param void
+   * @returns user object
+   * @memberof UserLoginFormComponent
+   * @see FetchApiDataService.userLogin()
+   * @example loginUser()
+   */
   //This is the function responsible for sending the form inputs to the backend
   loginUser(): void {
     this.fetchApiData.userLogin(this.loginData).subscribe((result) => {

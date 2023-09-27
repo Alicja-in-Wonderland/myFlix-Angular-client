@@ -27,7 +27,15 @@ export class ProfileViewComponent implements OnInit {
     this.getUser();
   }
 
-  //This function gets the user info and returns it along with their favourite movies
+  /**
+   * This method gets the user info and returns it along with their favourite movies
+   * @param void
+   * @returns user object
+   * @memberof ProfileViewComponent
+   * @see FetchApiDataService.getOneUser()
+   * @example getUser()
+   */
+  //This method gets the user info and returns it along with their favourite movies
   getUser(): void {
     this.fetchApiData.getOneUser().subscribe((response: any) => {
       this.user = response;
@@ -42,6 +50,14 @@ export class ProfileViewComponent implements OnInit {
     })
   }
 
+  /**
+   * This method will send the form inputs to the backend
+   * @param void
+   * @returns user object
+   * @memberof ProfileViewComponent
+   * @see FetchApiDataService.editUser()
+   * @example editUser()
+   */
   //This function allows user to edit their profile info
   editUser(): void {
     this.fetchApiData.editUser(this.userData).subscribe((data) => {
@@ -58,6 +74,15 @@ export class ProfileViewComponent implements OnInit {
     });
   }
 
+  /**
+   * This method will send the user object to the backend to be deleted
+   * @param void
+   * @returns user object
+   * @memberof ProfileViewComponent
+   * @see FetchApiDataService.deleteUser()
+   * @example deleteUser()
+   * 
+   */
   //This function allows user to delete their account permanently and return to the welcome screen
   deleteUser(): void {
     if (confirm('Are you sure?')) {

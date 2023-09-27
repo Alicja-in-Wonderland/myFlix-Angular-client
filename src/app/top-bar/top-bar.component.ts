@@ -6,6 +6,15 @@ import { Router } from '@angular/router';
   templateUrl: './top-bar.component.html',
   styleUrls: ['./top-bar.component.scss']
 })
+
+/**
+ * This component will render the top bar of the app
+ * @export
+ * @class TopBarComponent
+ * @implements {OnInit}
+ * @example <app-top-bar></app-top-bar>
+ * @see Router
+ */
 export class TopBarComponent {
 
   public username: string = '';

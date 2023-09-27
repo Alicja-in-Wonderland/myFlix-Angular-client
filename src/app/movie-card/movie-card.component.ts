@@ -14,6 +14,13 @@ export class MovieCardComponent {
   movies: any[] = [];
   user: any = {};
 
+  /**
+   * Creates an instance of MovieCardComponent.
+   *
+   * @param fetchApiData - The service for making API calls related to movies.
+   * @param dialog - The Angular Material Dialog service.
+   * @param router - The Angular Router service for navigation.
+   */
   constructor(
     public fetchApiData: FetchApiDataService,
     public snackBar: MatSnackBar,
@@ -26,6 +33,13 @@ export class MovieCardComponent {
     this.getMovies();
   }
 
+  /**
+   * This method will retrieve all movies from the database
+   * @param void
+   * @returns movies array
+   * @memberof MovieCardComponent
+   * @see FetchApiDataService.getAllMovies()
+   */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -33,6 +47,12 @@ export class MovieCardComponent {
     });
   }
 
+  /**
+   * Shows a dialog with information about a genre.
+   *
+   * @param name - The genre name to display in the dialog.
+   * @param description - The genre info to display in the dialog.
+   */
   showGenre(name: string, description: string): void {
     this.dialog.closeAll();
     const dialogConfig = new MatDialogConfig();
@@ -45,6 +65,12 @@ export class MovieCardComponent {
     this.dialog.open(InfoDialogComponent, dialogConfig);
   }
 
+  /**
+   * Shows a dialog with information about a director.
+   *
+   * @param name - The director's name to be displayed in the dialog.
+   * @param name - The director's biographical info to be displayed in the dialog.
+   */
   showDirector(name: string, bio: string): void {
     this.dialog.closeAll();
     const dialogConfig = new MatDialogConfig();
@@ -57,6 +83,12 @@ export class MovieCardComponent {
     this.dialog.open(InfoDialogComponent, dialogConfig);
   }
 
+  /**
+   * Shows a dialog with information about a movie's plot.
+   *
+   * @param title - The movie title to display in the dialog.
+   * @param description - The movie plot to display in the dialog.
+   */
   showSynopsis(title: string, description: string): void {
     this.dialog.closeAll();
     const dialogConfig = new MatDialogConfig();
@@ -69,6 +101,11 @@ export class MovieCardComponent {
     this.dialog.open(InfoDialogComponent, dialogConfig);
   }
 
+  /**
+   * This method handles the change in favourite status of a movie.
+   *
+   * @param movie - The movie for which the favourite status is being changed.
+   */
   toggleFavourite(movie: any): void {
     // Toggle the favourite status of the movie
     if (this.isFavouriteMovie(movie)) {
