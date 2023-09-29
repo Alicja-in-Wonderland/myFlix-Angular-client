@@ -25,6 +25,7 @@ import { MatListModule } from '@angular/material/list';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { InfoDialogComponent } from './info-dialog/info-dialog.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -59,7 +60,8 @@ const appRoutes: Routes = [
     MatSnackBarModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    MatToolbarModule
+    MatToolbarModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

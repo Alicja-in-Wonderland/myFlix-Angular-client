@@ -106,7 +106,7 @@ export class MovieCardComponent {
    *
    * @param movie - The movie for which the favourite status is being changed.
    */
-  toggleFavourite(movie: any): void {
+  /* toggleFavourite(movie: any): void {
     // Toggle the favourite status of the movie
     if (this.isFavouriteMovie(movie)) {
       // Remove the movie from favourites locally
@@ -116,7 +116,6 @@ export class MovieCardComponent {
     } else {
       // Add the movie to favourites locally
       const user = JSON.parse(localStorage.getItem('user') || '{}');
-
       user.Favourites.push(movie._id);
       localStorage.setItem('user', JSON.stringify(user));
 
@@ -140,5 +139,25 @@ export class MovieCardComponent {
   isFavouriteMovie(movie: any): boolean {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     return user.Favourites && user.Favourites.includes(movie._id);
+  } */
+
+  addFavourite(id: string): void {
+    this.fetchApiData.addFavouriteMovie(id).subscribe(() => {
+      this.snackBar.open('Added to favourites', 'OK', {
+        duration: 2000
+      })
+    });
+  }
+
+  isFavourite(id: string): boolean {
+    return this.fetchApiData.isFavouriteMovie(id)
+  }
+
+  removeFavourite(id: string): void {
+    this.fetchApiData.deleteFavouriteMovie(id).subscribe(() => {
+      this.snackBar.open('Removed from favourites', 'OK', {
+        duration: 2000
+      })
+    });
   }
 }
