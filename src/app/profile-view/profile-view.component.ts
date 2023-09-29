@@ -90,6 +90,7 @@ export class ProfileViewComponent implements OnInit {
         );
       });
       this.fetchApiData.deleteUser().subscribe((result) => {
+        this.router.navigate(['welcome']);
         localStorage.clear();
       });
     }
