@@ -37,17 +37,11 @@ export class ProfileViewComponent implements OnInit {
    */
   //This method gets the user info and returns it along with their favourite movies
   getUser(): void {
-    this.fetchApiData.getOneUser().subscribe((response: any) => {
-      this.user = response;
-      this.userData.Username = this.user.Username;
-      this.userData.Email = this.user.Email;
-      this.user.Birthday = formatDate(this.user.Birthday, 'dd-MM-yyyy', 'en-US', 'UTC+0');
-
-
-      this.fetchApiData.getAllMovies().subscribe((response: any) => {
-        this.favouriteMovies = response.filter((movie: { _id: any }) => this.user.Favourites.indexOf(movie._id) >= 0)
-      })
-    })
+    this.user = this.fetchApiData.getOneUser();
+    console.log(this.user);
+    this.fetchApiData.getAllMovies().subscribe((response: any) => {
+      this.favouriteMovies = response.filter((movie: { _id: any }) => this.user.Favourites.indexOf(movie._id) >= 0)
+    });
   }
 
   /**

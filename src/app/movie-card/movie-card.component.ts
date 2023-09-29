@@ -116,7 +116,8 @@ export class MovieCardComponent {
     } else {
       // Add the movie to favourites locally
       const user = JSON.parse(localStorage.getItem('user') || '{}');
-      user.Favorites.push(movie._id);
+
+      user.Favourites.push(movie._id);
       localStorage.setItem('user', JSON.stringify(user));
 
       // Add the movie to favourites on the backend server

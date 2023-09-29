@@ -3,6 +3,7 @@ import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
 
 //Declaring the api url that will provide data for the client app
 const apiUrl = 'https://myflix-db.herokuapp.com/';
@@ -84,18 +85,8 @@ export class FetchApiDataService {
     );
   }
   // Making the api call for the get one user endpoint
-  getOneUser(): Observable<any> {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    const token = localStorage.getItem('token');
-    return this.http.get(apiUrl + 'users/' + user.Username, {
-      headers: new HttpHeaders(
-        {
-          Authorization: 'Bearer ' + token,
-        })
-    }).pipe(
-      map(this.extractResponseData),
-      catchError(this.handleError)
-    );
+  getOneUser(): any {
+    return JSON.parse(localStorage.getItem('user')!) || {};
   }
 
   // Making the api call for getting favourite movies for a user endpoint
@@ -118,9 +109,10 @@ export class FetchApiDataService {
   addFavouriteMovie(movieId: string): Observable<any> {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     const token = localStorage.getItem('token');
+    console.log(user);
     user.Favourites.push(movieId);
     localStorage.setItem('user', JSON.stringify(user));
-
+    console.log(user);
     // Makes the API call to the backend server to add the movie to favourites
     return this.http.post(apiUrl + 'users/' + user.Username + '/movies/' + movieId, {}, {
       headers: new HttpHeaders(
