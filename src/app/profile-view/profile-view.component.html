@@ -6,11 +6,12 @@
     <p>Birthday: {{user.Birthday.slice(0,10)}}</p><br>
 
     <h2>Favourite Movies</h2>
-    <mat-grid-list cols="6" *ngFor="let movie of favouriteMovies">
-        <h4>{{movie.Title}}</h4>
-        <mat-grid-tile><img align="start" src="{{movie.ImagePath}}" /></mat-grid-tile>
-    </mat-grid-list>
-
+    <div style="display: flex; flex-wrap: wrap;">
+        <mat-card class="fav-card" *ngFor="let movie of favouriteMovies">
+            <mat-card-title class="fav-title">{{movie.Title}}</mat-card-title>
+            <img mat-card-md-image class="fav-img" src="{{movie.ImagePath}}" />
+        </mat-card>
+    </div>
     <h2>Update Your Profile</h2><br>
     <form>
         <mat-form-field class="update-form">

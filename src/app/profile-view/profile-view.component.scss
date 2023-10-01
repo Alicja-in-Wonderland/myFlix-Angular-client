@@ -7,9 +7,25 @@
     margin-bottom: 5px;
 }
 
-img {
+.fav-card {
+    max-width: fit-content;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    padding: 3px;
+    background-color: #D8A22A;
+
+    .fav-title {
+        color: black;
+    }
+
+    .fav-img {
+        border-radius: inherit;
+    }
+}
+
+/* img {
     width: 100%;
     max-width: 150px;
     height: auto;
     border-radius: 10px;
-}
+} */
