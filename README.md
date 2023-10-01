@@ -1,9 +1,24 @@
 # myFlix-Angular-client
 
+MyFlix is a web application that allows users to discover and manage their favourite movies. It provides a user-friendly interface for browsing movie details, genres, and directors. Users can create accounts, log in, and add/remove movies to/from favourites' list.
+
+This is the front-end of the myFlix movie app. This project is designed to work alongside the movie_api repository, which can be found here https://github.com/Alicja-in-Wonderland/movie_api.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.2.
+
+## Screenshots
+
+![myflix-ang-screenshot](https://github.com/Alicja-in-Wonderland/myFlix-Angular-client/assets/129612148/65e769e3-2c45-4e1e-9fbe-94f2e5435e9d)
+
 
 ## URL to live website
 https://alicja-in-wonderland.github.io/myFlix-Angular-client/welcome
+
+## Tech stack
+
+- Angular
+- Typescript
+- Angular Material
 
 ## Development server
 
